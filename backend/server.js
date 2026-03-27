@@ -21,6 +21,13 @@ const transactionRoutes = require('./src/routes/transactions');
 const portfolioRoutes = require('./src/routes/portfolio');
 const adminRoutes = require('./src/routes/admin');
 
+// Validate environment
+if (!process.env.JWT_SECRET) {
+  console.error('\x1b[31m%s\x1b[0m', '❌ ERROR: JWT_SECRET not set in .env file');
+  console.error('\x1b[33m%s\x1b[0m', '   Run "npm run setup" to configure your environment');
+  process.exit(1);
+}
+
 // Initialize Express app
 const app = express();
 
